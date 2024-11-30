@@ -36,8 +36,8 @@ int main() {
     else{
         std::cout<<"PORT ZOSTAL OTWARTY DO TRANSMISJI!"<<std::endl<<std::endl;
         DCB dcb;
-        dcb.DCBlength = sizeof(dcb); // aktualny rozmiar struktury DCB
-        GetCommState(commDev, &dcb); // udostępnienie aktualnych parametrów DCB
+        dcb.DCBlength = sizeof(dcb);
+        GetCommState(commDev, &dcb); 
         std::cout<<"Poprzednie ustawienia:"<<std::endl;
         std::cout<<"\t- Predkosc transmisji: "<< dcb.BaudRate<<std::endl;
         std::cout<<"\t- Parzystosc: "<<dcb.fParity<<std::endl;
@@ -59,14 +59,6 @@ int main() {
         std::cout<<"Czy chcesz zmienic ustawienia portu? \n y/n?"<<std::endl;
         std::cin>>changeSettings;
         if(changeSettings == 'y'){
-            //
-            // dcb.BaudRate = CBR_256000; // prędkość transmisji
-            // dcb.fParity = TRUE; // sprawdzanie parzystości
-            // dcb.Parity = NOPARITY; // ustawienie parzystości
-            // dcb.StopBits = TWOSTOPBITS; // bity stopu
-            // dcb.ByteSize = 8; // bity danych
-            // dcb.fDtrControl = 1; // np. kontrola linii DTR
-
             std::cout<< "Wybierz wartsc parametru BaudRate:\n"
             "[1]-CBR_110 | [2]-CBR_300 | [3]-CBR_600 | [4]-CBR_1200 | [5]-CBR_2400 | [6]-CBR_4800 | [7]-CBR_9600 | [8]-CBR_14400 \n "
             "[9]-CBR_19200 | [10]-CBR_38400 | [11]-CBR_56000 | [12]-CBR_57600 | [13]-CBR_115200 | [14]CBR_128000 | [15]-CBR_256000  "<<std::endl;
@@ -136,27 +128,6 @@ int main() {
         std::cout<<"[1] Wyslanie lancucha znakow"<<std::endl;
         std::cout<<"[2] Wyslanie tresci pliku"<<std::endl;
         std::cin>>choice;
-        // if(choice == 1){
-        //     ///Wysłanie liter
-        //     char letter[2];
-        //     std::cout<<"Podaj znak do wyslania: "<<std::endl;
-        //     std::cin>>letter;
-        //     letter[1] ='\0';
-        //     char* buffIn = new char;
-        //     strcpy(buffIn,letter);
-        //     if(writeSerialPort(buffIn,2))
-        //         std::cout<<"Pomyslnie wyslano litere!"<<std::endl;
-        //     else
-        //         std::cout<<"Blad w wyslaniu litery!"<<std::endl;
-        //     ///Odczyt liter
-        //     char *buffOut = new char;
-        //     if(readSerialPort(buffOut,2))
-        //         std::cout<<"Pomyslnie odebrano litere!"<<std::endl;
-        //     else
-        //         std::cout<<"Blad w odbiorze litery!"<<std::endl;
-        //     delete buffIn;
-        //     delete buffOut;
-        // }
         if(choice == 1){
             ///Wysłanie tekstu
             std::string text;
@@ -214,14 +185,14 @@ int main() {
                 readSerialPort(buffIn, remainingBytes);
                 fwrite(buffIn, remainingBytes, 1, dst);
             }
-            // if(writeSerialPort(buffIn,buffSize))
-            //     std::cout<<"Pomyslnie wyslano tekst z pliku o sciezce: "<<pathOut<<"!"<<std::endl;
-            // else
-            //     std::cout<<"Blad w wyslaniu tekstu z pliku!"<<std::endl;
-            // if(readSerialPort(buffOut,buffSize))
-            //     std::cout<<"Pomyslnie odebrano tekst i wpisano do pliku o sciezce: "<<pathIn<<"!"<<std::endl;
-            // else
-            //     std::cout<<"Blad w odbieraniu tekstu!"<<std::endl;
+            if(writeSerialPort(buffIn,buffSize))
+                std::cout<<"Pomyslnie wyslano tekst z pliku o sciezce: "<<pathOut<<"!"<<std::endl;
+            else
+                std::cout<<"Blad w wyslaniu tekstu z pliku!"<<std::endl;
+            if(readSerialPort(buffOut,buffSize))
+                std::cout<<"Pomyslnie odebrano tekst i wpisano do pliku o sciezce: "<<pathIn<<"!"<<std::endl;
+            else
+                std::cout<<"Blad w odbieraniu tekstu!"<<std::endl;
             fclose(src);
             fclose(dst);
             delete buffIn;
