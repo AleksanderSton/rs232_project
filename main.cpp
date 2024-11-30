@@ -206,14 +206,6 @@ int main() {
                 readSerialPort(buffIn, remainingBytes);
                 fwrite(buffIn, remainingBytes, 1, dst);
             }
-            // if(writeSerialPort(buffIn,buffSize))
-            //     std::cout<<"Pomyslnie wyslano tekst z pliku o sciezce: "<<pathOut<<"!"<<std::endl;
-            // else
-            //     std::cout<<"Blad w wyslaniu tekstu z pliku!"<<std::endl;
-            // if(readSerialPort(buffOut,buffSize))
-            //     std::cout<<"Pomyslnie odebrano tekst i wpisano do pliku o sciezce: "<<pathIn<<"!"<<std::endl;
-            // else
-            //     std::cout<<"Blad w odbieraniu tekstu!"<<std::endl;
             fclose(src);
             fclose(dst);
             delete buffIn;
