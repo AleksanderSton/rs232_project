@@ -36,8 +36,8 @@ int main() {
     else{
         std::cout<<"PORT ZOSTAL OTWARTY DO TRANSMISJI!"<<std::endl<<std::endl;
         DCB dcb;
-        dcb.DCBlength = sizeof(dcb); // aktualny rozmiar struktury DCB
-        GetCommState(commDev, &dcb); // udostępnienie aktualnych parametrów DCB
+        dcb.DCBlength = sizeof(dcb);
+        GetCommState(commDev, &dcb);
         std::cout<<"Poprzednie ustawienia:"<<std::endl;
         std::cout<<"\t- Predkosc transmisji: "<< dcb.BaudRate<<std::endl;
         std::cout<<"\t- Parzystosc: "<<dcb.fParity<<std::endl;
@@ -59,14 +59,6 @@ int main() {
         std::cout<<"Czy chcesz zmienic ustawienia portu? \n y/n?"<<std::endl;
         std::cin>>changeSettings;
         if(changeSettings == 'y'){
-            //
-            // dcb.BaudRate = CBR_256000; // prędkość transmisji
-            // dcb.fParity = TRUE; // sprawdzanie parzystości
-            // dcb.Parity = NOPARITY; // ustawienie parzystości
-            // dcb.StopBits = TWOSTOPBITS; // bity stopu
-            // dcb.ByteSize = 8; // bity danych
-            // dcb.fDtrControl = 1; // np. kontrola linii DTR
-
             std::cout<< "Wybierz wartsc parametru BaudRate:\n"
             "[1]-CBR_110 | [2]-CBR_300 | [3]-CBR_600 | [4]-CBR_1200 | [5]-CBR_2400 | [6]-CBR_4800 | [7]-CBR_9600 | [8]-CBR_14400 \n "
             "[9]-CBR_19200 | [10]-CBR_38400 | [11]-CBR_56000 | [12]-CBR_57600 | [13]-CBR_115200 | [14]CBR_128000 | [15]-CBR_256000  "<<std::endl;
