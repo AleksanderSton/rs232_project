@@ -1,0 +1,3 @@
+D:/CLionProjects/rs232_project/cmake-build-debug/CMakeFiles/rs232_project.dir
+D:/CLionProjects/rs232_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CLionProjects/rs232_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
