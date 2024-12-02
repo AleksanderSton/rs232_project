@@ -124,31 +124,9 @@ int main() {
         }
         int choice;
         std::cout<<"Wybierz tryb wyslania"<<std::endl;
-        //std::cout<<"[1] Wyslanie litery"<<std::endl;
         std::cout<<"[1] Wyslanie lancucha znakow"<<std::endl;
         std::cout<<"[2] Wyslanie tresci pliku"<<std::endl;
         std::cin>>choice;
-        // if(choice == 1){
-        //     ///Wysłanie liter
-        //     char letter[2];
-        //     std::cout<<"Podaj znak do wyslania: "<<std::endl;
-        //     std::cin>>letter;
-        //     letter[1] ='\0';
-        //     char* buffIn = new char;
-        //     strcpy(buffIn,letter);
-        //     if(writeSerialPort(buffIn,2))
-        //         std::cout<<"Pomyslnie wyslano litere!"<<std::endl;
-        //     else
-        //         std::cout<<"Blad w wyslaniu litery!"<<std::endl;
-        //     ///Odczyt liter
-        //     char *buffOut = new char;
-        //     if(readSerialPort(buffOut,2))
-        //         std::cout<<"Pomyslnie odebrano litere!"<<std::endl;
-        //     else
-        //         std::cout<<"Blad w odbiorze litery!"<<std::endl;
-        //     delete buffIn;
-        //     delete buffOut;
-        // }
         if(choice == 1){
             ///Wysłanie tekstu
             std::string text;
@@ -193,7 +171,6 @@ int main() {
                 writeSerialPort(buffOut,buffSize);
                 if(readSerialPort(buffIn,buffSize) == 0) {
                     std::cout << "Błąd w odbiorze danych!" << std::endl;
-                    break;
                 }
                 fwrite(buffIn,buffSize,1,dst);
                 std::cout<<i<<"/"<<frame<<std::endl;
